@@ -1,6 +1,6 @@
-# fwb18sunketa
+# db18sunketa
 anusha sunketa
-[heroku server](https://fwb18sunketa.herokuapp.com/)
+[heroku server](https://db18sunketa.herokuapp.com/)
 
 Class cherry
 
