@@ -6,3 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+.cherryAttr { 
+  background-color: aquamarine; 
+  width: 150px; 
+  text-align:left;
+  padding: 8px;
+  margin: 5px;
+  flex-wrap: nowrap;
+}
+.Title{
+  color: rgb(32, 218, 41);
+  font-weight: 500;
+  font-family: sans-serif;
+}

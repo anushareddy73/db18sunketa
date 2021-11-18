@@ -1,0 +1,46 @@
+extends layout 
+
+block content
+  h1= title
+   if (toShow == null)
+    h2 No instance to Update
+   else
+  - let cherryid = toShow._id 
+  - let Cherry_type = toShow.Cherry_type 
+  - let Cost = toShow.Cost 
+  - let Weight = toShow.Weight 
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{cherryid} 
+  - let actionid = "/resource/cherry/" + cherryid 
+  form(id='cherryForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.cherryAttr(for='Cherry_type') Cherry type 
+        input#Cherry_type(type='text', name='Cherry_type', value= Cherry_type ) 
+    div.form-group 
+        label.cherryAttr(for='Weight') cherry Weight
+        input#Weight(type='number', name='Weight', value= cherryWeight ) 
+    div.form-group 
+        label.cherryAttr(for='Cost') cherry Cost 
+        input#Cost(type='number', name='Cost', value= cherryCost ) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['cherryForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 
+ 

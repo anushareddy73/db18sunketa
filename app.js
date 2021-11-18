@@ -17,7 +17,7 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var addmodsRouter = require("./routes/addmods");
 var selectorRouter = require("./routes/selector");
-//var Costume = require("./models/cherry");
+//var cherry = require("./models/cherry");
 var resourceRouter = require('./routes/resource');
 var cherry = require("./models/cherry");
 
@@ -27,7 +27,7 @@ async function recreateDB() {
   await cherry.deleteMany();
 
   let instance1 = new cherry({
-    cherry_type: "Big cherry",
+    Cherry_type: "small",
     Weight: 10,
     Cost: 10,
   });
@@ -36,7 +36,7 @@ async function recreateDB() {
     console.log("First object saved");
   });
   let instance2 = new cherry({
-    Cherry_type: "rainier cherry",
+    Cherry_type: "red",
     Weight: 20,
     Cost: 100,
   });
@@ -45,7 +45,7 @@ async function recreateDB() {
     console.log("second object saved");
   });
   let instance3 = new cherry({
-    Cherry_type: "morello cherry",
+    Cherry_type: "round",
     Weight: 30,
     Cost: 200,
   });
@@ -83,7 +83,7 @@ app.use("/cherry", cherryRouter);
 app.use("/users", usersRouter);
 app.use("/selector", selectorRouter);
 app.use("/addmods", addmodsRouter);
-//app.use("/costume", costumeRouter);
+//app.use("/cherry", cherryRouter);
 app.use('/resource', resourceRouter);
 
 // catch 404 and forward to error handler

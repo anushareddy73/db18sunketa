@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1(class="Title")= title
+   if (toShow == null)
+    h2 No instance to Update
+   else
+    - let cherryid = toShow._id   
+    - let Cherry_type = toShow.Cherry_type
+    - let Weight = toShow.Weight
+    - let Cost = toShow.Cost
+    div
+      div.row
+        div(class='cherryAttr mr-3') cherry ID is:
+        div #{cherryid}
+      div.row
+        div(class='cherryAttr mr-3') cherry CherryType is:
+        div #{Cherry_type}
+      div.row
+        div(class='cherryAttr mr-3') cherry Weight is:
+        div #{Weight}
+      div.row
+        div(class='cherryAttr mr-3') cherry Cost is:
+        div #{Cost}

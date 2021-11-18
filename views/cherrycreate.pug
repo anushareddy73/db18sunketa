@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+
+  form(id='cherryForm', action="/resource/cherry", method="POST")
+    div.form-group
+        label.cherryAttr(for='Cherry_type') Cherry type
+        input#Cherry_type(type='text', name='Cherry_type')
+    div.form-group
+        label.cherryAttr(for='Weight') cherry Weight 
+        input#Weight(type='number', name='Weight')
+    div.form-group
+        label.cherryAttr(for='Cost') cherry Cost 
+        input#Cost(type='number', name='Cost')
+    input(type="submit")
+
+  script.
+    document.forms['cherryForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });
